@@ -5,11 +5,12 @@ import {Urbanist} from 'next/font/google'
 import Navbar from '@/components/navbar'
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
+import GoogleMapView from '@/components/ui/google-map-view'
 
 const urbanist = Urbanist({subsets: ['latin']})
 
 export const metadata: Metadata = {
-    title: 'Bengs',
+    title: 'Bengs Store',
     description: 'Bengs',
 }
 
@@ -18,14 +19,16 @@ export default function RootLayout({
                                    }: {
     children: React.ReactNode
 }) {
+
     return (
         <html lang="en">
         <body className={urbanist.className}>
-            <ToastProvider />
-            <ModalProvider/>
-            <Navbar/>
-            {children}
-            <Footer/>
+        <ToastProvider/>
+        <ModalProvider/>
+        <Navbar/>
+        {children}
+        <GoogleMapView/>
+        <Footer/>
         </body>
         </html>
     )
