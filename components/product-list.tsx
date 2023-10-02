@@ -1,6 +1,7 @@
 import ProductCard from "@/components/ui/product-card";
 import { Product } from "@/types";
 import NoResults from "@/components/ui/no-results";
+import GoogleMapView from "@/components/ui/google-map-view";
 
 interface ProductListProps {
     title: string;
@@ -19,6 +20,9 @@ const ProductList: React.FC<ProductListProps> = ({
                 {items.map((item) => (
                     <ProductCard key={item.id} data={item} />
                 ))}
+            </div>
+            <div>
+                <GoogleMapView/>
             </div>
         </div>
     );

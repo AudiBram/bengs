@@ -68,10 +68,24 @@ const GoogleMapView = () => {
         )
     }
 
+    const onStartNodeDrag = (e: google.maps.MapMouseEvent) => {
+        if (e.latLng) {
+            const newPosition = {
+                lat: e.latLng.lat(),
+                lng: e.latLng.lng(),
+            };
+            setUserLocation(newPosition);
+        }
+    };
+
+    const h2Style: React.CSSProperties = {
+        textAlign: "center",
+        marginTop: "50px",
+    };
+
     return (
         <div>
             <LoadScript googleMapsApiKey={key}>
-                {directions && <Distance leg={directions.routes[0].legs[0]} />}
                 <GoogleMap
                     mapContainerStyle={mapContainerStyle}
                     center={des}
@@ -96,6 +110,8 @@ const GoogleMapView = () => {
                         <>
                             <Marker
                                 position={userLocation}
+                                draggable={true}
+                                onDrag={(e) => onStartNodeDrag(e)}
                             />
                             <MarkerClusterer>
                                 {clusturer => des && (
@@ -113,6 +129,9 @@ const GoogleMapView = () => {
                         </>
                     )}
                 </GoogleMap>
+                <h2 style={h2Style}>
+                    {directions && <Distance leg={directions.routes[0].legs[0]}/>}
+                </h2>
             </LoadScript>
         </div>
     );

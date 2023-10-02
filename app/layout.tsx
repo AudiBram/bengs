@@ -5,7 +5,6 @@ import {Urbanist} from 'next/font/google'
 import Navbar from '@/components/navbar'
 import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
-import GoogleMapView from '@/components/ui/google-map-view'
 
 const urbanist = Urbanist({subsets: ['latin']})
 
@@ -27,7 +26,6 @@ export default function RootLayout({
         <ModalProvider/>
         <Navbar/>
         {children}
-        <GoogleMapView/>
         <Footer/>
         </body>
         </html>
